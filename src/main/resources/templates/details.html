@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- CSS only -->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+
+    <style>
+        .back:hover {
+            color: #682773;
+            cursor: pointer;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-light " style="box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) ;">
+    <div class="container-fluid">
+        <a class="navbar-brand btn btn-outline-success" style="border-radius: 50% 20% / 10% 40%;" th:href="@{'/'}">Employees</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{'/'}">Table</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/add'}">Add new employee</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container  mt-3 ">
+    <!--    <h3>Update information about ->  <span th:text="${employee.firstname}">   </span></h3>-->
+    <!--    <form class="col-6 align-content-center"  th:action="@{'/saveEmployee'}" method="post" th:if = "${employee!=null}">-->
+    <!--        <input type="hidden" name="id" th:value="${employee.id}">-->
+    <!--        <div class="mt-2">-->
+    <!--            <label>-->
+    <!--                firstname-->
+    <!--            </label>-->
+    <!--            <input  class="form-control" type="text" name="firstname" th:value="${employee.firstname}">-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <label>-->
+    <!--                lastname-->
+    <!--            </label>-->
+    <!--            <input  class="form-control" type="text" name="lastname" th:value="${employee.lastname}">-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <label>-->
+    <!--                age-->
+    <!--            </label>-->
+    <!--            <input class="form-control" type="number" name="age" th:value="${employee.age}">-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <label>-->
+    <!--                phonenumber-->
+    <!--            </label>-->
+    <!--            <input  class="form-control" type="number" name="phonenumber" th:value="${employee.phonenumber}">-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <label>-->
+    <!--                address-->
+    <!--            </label>-->
+    <!--            <input class="form-control" type="text" name="address" th:value="${employee.address}">-->
+    <!--        </div>-->
+
+    <!--        <div>-->
+    <!--            <label>-->
+    <!--                position-->
+    <!--            </label>-->
+    <!--            <input class="form-control" type="text" name="position" th:value="${employee.position}">-->
+    <!--        </div>-->
+
+    <!--        <div>-->
+    <!--            <label>-->
+    <!--                salary-->
+    <!--            </label>-->
+    <!--            <input class="form-control" type="number" name="salary" th:value="${employee.salary}">-->
+    <!--        </div>-->
+
+    <!--        <button class="btn  btn-sm mt-2 btn-success"> EDIT</button>-->
+    <!--    </form>-->
+
+
+    <div class="container rounded bg-white mt-5 card" style="box-shadow: 0 0 3px rgba(0,0,0,0.3)">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                                                                                             src="https://cdn-icons-png.flaticon.com/512/61/61205.png"
+                                                                                             width="90"><span
+                        class="font-weight-bold" th:text="${employee.firstname}"></span><span class="text-black-50"
+                                                                                              th:text="${employee.position}"></span>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="p-3 py-5">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-row align-items-center back"><i
+                                class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                            <a th:href="@{'/'}">Back to table</a>
+                        </div>
+                        <h6 class="text-right">Edit Profile</h6>
+                    </div>
+                    <form th:action="@{'/saveEmployee'}" method="post" th:if="${employee!=null}">
+                        <div class="row mt-2">
+                            <input type="hidden" name="id" th:value="${employee.id}">
+                            <div class="col-md-6">
+                                <label>
+                                    First Name
+                                </label>
+                                <input class="form-control" type="text" name="firstname"
+                                       th:value="${employee.firstname}">
+                            </div>
+                            <div class="col-md-6">
+                                <label>
+                                    Last Name
+                                </label>
+                                <input class="form-control" type="text" name="lastname" th:value="${employee.lastname}">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <label>
+                                    Age
+                                </label>
+                                <input class="form-control" type="number" name="age" th:value="${employee.age}">
+                            </div>
+                            <div class="col-md-6">
+                                <label>
+                                    Phone Number
+                                </label>
+                                <input class="form-control" type="number" name="phonenumber"
+                                       th:value="${employee.phonenumber}">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label>
+                                    Position
+                                </label>
+                                <input class="form-control" type="text" name="position" th:value="${employee.position}">
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label>
+                                        Address
+                                    </label>
+                                    <input class="form-control" type="text" name="address"
+                                           th:value="${employee.address}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label>
+                                    Salary
+                                </label>
+                                <input class="form-control" type="number" name="salary" th:value="${employee.salary}">
+                            </div>
+                        </div>
+                        <div class="mt-3 text-right align-items-end ">
+                            <button style="width:110px;height:30px"
+                                    class="btn btn-sm btn-primary profile-button align-items-end" type="submit">Save
+                                Profile
+                            </button>
+                        </div>
+                    </form>
+                    <form th:action="@{'/deleteEmployee'}" method="post" th:if="${employee!=null}">
+                        <input type="hidden" name="id" th:value="${employee.id}">
+                        <button class="btn btn-sm  mt-2 btn-danger" style="width:110px;height:30px"> Delete profile
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

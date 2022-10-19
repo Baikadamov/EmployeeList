@@ -1,0 +1,65 @@
+ <html xmlns:th="http://www.thymeleaf.org">
+ <head>
+     <!-- CSS only -->
+     <!-- JavaScript Bundle with Popper -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+ </head>
+  <body>
+
+
+  <nav class="navbar navbar-expand-lg bg-light" style="box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) ;">
+      <div class="container-fluid">
+          <a class="navbar-brand btn btn-outline-success" style="border-radius: 50% 20% / 10% 40%;" th:href="@{'/'}">Employees</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" th:href="@{'/'}">Table</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" th:href="@{'/add'}">Add new employee</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+
+
+  <div class="container mt-5 ">
+      <h4 style="letter-spacing: 15px">EMPLOYEES TABLE</h4>
+      <hr>
+      <table class="table">
+          <thead class="table-header">
+          <tr>
+              <th>ID</th>
+              <th>NAME</th>
+              <th>SURNAME</th>
+              <th>AGE</th>
+              <th>PHONE NUMBER</th>
+              <th>ADDRESS</th>
+              <th>POSITION</th>
+              <th>SALARY $</th>
+              <th class="text-center align-content-center">INFORMATION</th>
+          </tr>
+          </thead>
+          <tbody  >
+                <tr th:each="employee : ${employees} ">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.firstname}"></td>
+                    <td th:text="${employee.lastname}"></td>
+                    <td th:text="${employee.age}"></td>
+                     <td th:text="${'+77'+employee.phonenumber }">  </td>
+                    <td th:text="${employee.address}"></td>
+                    <td th:text="${employee.position}"></td>
+                    <td th:text="${employee.salary}"></td>
+                    <td class="text-center align-content-center"> <a class="btn btn-sm btn-outline-success" th:href="@{'/details' + ${employee.id}}"> Details </a></td>
+                </tr>
+          </tbody>
+      </table>
+  </div>
+ </body>
+ </html>
